@@ -25,12 +25,12 @@ def encode() :
 def decode() :
     toDecode = (toCode.get(0.0, "end")).lower()
     decoded = ""
-    for i in range(0, len(toDecode), 2) :
-        if toDecode[i+1]=="•" :
-            decoded += vowels[alphabets.index(toDecode[i])]
-        elif toDecode[i+1]=="-" :
-            decoded += consonants[alphabets.index(toDecode[i])]
-        else :
+    for i in range(1, len(toDecode)) :
+        if toDecode[i]=="•" :
+            decoded += vowels[alphabets.index(toDecode[i-1])]
+        elif toDecode[i]=="-" :
+            decoded += consonants[alphabets.index(toDecode[i-1])]
+        elif toDecode[i] not in alphabets :
             decoded += toDecode[i]
     result.configure(state="normal")
     result.delete(0.0, "end")
